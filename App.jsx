@@ -3,13 +3,18 @@ import {Button, StyleSheet, Text, TextInput, View} from 'react-native';
 
 export default function App() {
     const [enteredGoalText, setEnteredGoalText] = useState('');
+    const [courseGoals, setCourseGoals] = useState([]);
 
     const goalInputHandler = (enteredText) => {
         setEnteredGoalText(enteredText);
     }
 
     const addGoalHandler = () => {
-        console.log(enteredGoalText);
+        // This is the best way to update state, instead of just using the spread operator
+        setCourseGoals(currentCourseGoals => [
+            ...currentCourseGoals,
+            enteredGoalText
+        ]);
     }
 
     return (
@@ -22,7 +27,7 @@ export default function App() {
                 <Button title={'Add Goal'} onPress={addGoalHandler}/>
             </View>
             <View style={styles.goalsContainer}>
-                <Text>List of goals...</Text>
+                {courseGoals.map((goal) => <Text key={goal}>{goal}</Text>)}
             </View>
         </View>
     );
