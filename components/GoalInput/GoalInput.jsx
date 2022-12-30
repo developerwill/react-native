@@ -1,4 +1,4 @@
-import {TextInput, View, Button, Modal} from "react-native";
+import {TextInput, View, Button, Modal, Image} from "react-native";
 import styles from "./Style";
 import {useState} from "react";
 
@@ -25,13 +25,16 @@ export default function GoalInput(props) {
     return (
         <Modal visible={props.visible} animationType={'slide'}>
             <View style={styles.inputContainer}>
+                <Image
+                    style={styles.image}
+                    source={require('../../assets/adaptive-icon.png')}
+                />
                 <TextInput
                     style={styles.textInput}
                     placeholder={'Your course goal'}
                     onChangeText={goalInputHandler}
                     value={enteredGoalText}
                 />
-
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
                         <Button title={'Cancel'} onPress={props.hideModal}/>
