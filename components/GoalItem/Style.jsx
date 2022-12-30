@@ -6,6 +6,9 @@ const styles = StyleSheet.create({
         borderRadius: 6,
         backgroundColor: '#5e0acc'
     },
+    pressedItem: {
+        opacity: 0.5
+    },
     goalText: {
         color: 'white',
         padding: 8,
