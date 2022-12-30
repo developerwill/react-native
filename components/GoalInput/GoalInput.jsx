@@ -16,10 +16,9 @@ export default function GoalInput(props) {
                 // no need to pass in a key value as a prop to the children
                 {text: enteredGoalText, id: Math.random().toString()}
             ]);
+            props.hideModal();
+            setEnteredGoalText('');
         }
-
-        props.hideModal();
-        setEnteredGoalText('');
     }
 
     return (
