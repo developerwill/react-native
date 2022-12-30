@@ -1,8 +1,8 @@
-import {TextInput, View, Button} from "react-native";
+import {TextInput, View, Button, Modal} from "react-native";
 import styles from "./Style";
 import {useState} from "react";
 
-export default function GoalInput({setCourseGoals}) {
+export default function GoalInput(props) {
     const [enteredGoalText, setEnteredGoalText] = useState('');
 
     const goalInputHandler = (enteredText) => setEnteredGoalText(enteredText);
@@ -10,7 +10,7 @@ export default function GoalInput({setCourseGoals}) {
     const addGoalHandler = () => {
         if (enteredGoalText.trim() !== '') {
             // This is the best way to update state, instead of just using the spread operator
-            setCourseGoals(currentCourseGoals => [
+            props.setCourseGoals(currentCourseGoals => [
                 ...currentCourseGoals,
                 // By passing an object like this FlatList will automatically grab the text/key values
                 // no need to pass in a key value as a prop to the children
@@ -22,13 +22,24 @@ export default function GoalInput({setCourseGoals}) {
     }
 
     return (
-        <View style={styles.inputContainer}>
-            <TextInput
-                style={styles.textInput}
-                placeholder={'Your course goal'}
-                onChangeText={goalInputHandler}
-                value={enteredGoalText}/>
-            <Button title={'Add Goal'} onPress={addGoalHandler}/>
-        </View>
+        <Modal visible={props.visible} animationType={'slide'}>
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.textInput}
+                    placeholder={'Your course goal'}
+                    onChangeText={goalInputHandler}
+                    value={enteredGoalText}
+                />
+
+                <View style={styles.buttonContainer}>
+                    <View style={styles.button}>
+                        <Button title={'Cancel'}/>
+                    </View>
+                    <View style={styles.button}>
+                        <Button title={'Add Goal'} onPress={addGoalHandler}/>
+                    </View>
+                </View>
+            </View>
+        </Modal>
     );
 }
