@@ -18,7 +18,8 @@ export default function GoalInput(props) {
             ]);
         }
 
-        setEnteredGoalText('')
+        props.hideModal();
+        setEnteredGoalText('');
     }
 
     return (
@@ -33,7 +34,7 @@ export default function GoalInput(props) {
 
                 <View style={styles.buttonContainer}>
                     <View style={styles.button}>
-                        <Button title={'Cancel'}/>
+                        <Button title={'Cancel'} onPress={props.hideModal}/>
                     </View>
                     <View style={styles.button}>
                         <Button title={'Add Goal'} onPress={addGoalHandler}/>

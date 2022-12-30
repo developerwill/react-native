@@ -10,12 +10,21 @@ export default function App() {
     const [courseGoals, setCourseGoals] = useState([]);
 
     const showAddNewGoalModal = () => setModalIsVisible(true);
+    const hideAddNewGoalModal = () => setModalIsVisible(false);
 
     return (
         <View style={styles.appContainer}>
-            <Button title={'Add new goal'} color={'#5e0acc'} onPress={showAddNewGoalModal}/>
+            <Button
+                title={'Add new goal'}
+                color={'#5e0acc'}
+                onPress={showAddNewGoalModal}
+            />
 
-            <GoalInput setCourseGoals={setCourseGoals} visible={modalIsVisible}/>
+            <GoalInput
+                setCourseGoals={setCourseGoals}
+                visible={modalIsVisible}
+                hideModal={hideAddNewGoalModal}
+            />
 
             <GoalList
                 courseGoals={courseGoals}
