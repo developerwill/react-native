@@ -1,5 +1,5 @@
 import {useState} from "react";
-import {Button, View} from 'react-native';
+import {Button, StatusBar, View} from 'react-native';
 import GoalInput from "./components/GoalInput/GoalInput";
 import ClearBtn from "./components/ClearBtn/ClearBtn";
 import GoalList from "./components/GoalList/GoalList";
@@ -13,7 +13,9 @@ export default function App() {
     const hideAddNewGoalModal = () => setModalIsVisible(false);
 
     return (
-        <View style={styles.appContainer}>
+        <>
+            <StatusBar style={'auto'}/>
+            <View style={styles.appContainer}>
             <Button
                 title={'Add new goal'}
                 color={'#5e0acc'}
@@ -33,5 +35,7 @@ export default function App() {
 
             <ClearBtn setCourseGoals={setCourseGoals}/>
         </View>
+        </>
+
     );
 }
