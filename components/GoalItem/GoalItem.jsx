@@ -7,7 +7,6 @@ function GoalItem({itemData, onDelete}) {
             <Pressable
                 android_ripple={{color: '#210644'}}
                 onPress={onDelete.bind(this, itemData.item.id)}
-                style={({pressed}) => pressed && styles.pressedItem}
             >
                 <Text style={styles.goalText}>{itemData.item.text}</Text>
             </Pressable>
