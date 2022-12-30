@@ -3,11 +3,13 @@ import styles from "./Style";
 
 function GoalItem({itemData, onDelete}) {
     return (
-        <Pressable onPress={onDelete.bind(this, itemData.item.id)}>
-            <View style={styles.goalItem}>
+        <View style={styles.goalItem}>
+            <Pressable
+                android_ripple={{color: '#210644'}}
+                onPress={onDelete.bind(this, itemData.item.id)}>
                 <Text style={styles.goalText}>{itemData.item.text}</Text>
-            </View>
-        </Pressable>
+            </Pressable>
+        </View>
     );
 }
 
